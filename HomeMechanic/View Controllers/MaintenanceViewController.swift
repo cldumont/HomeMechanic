@@ -10,19 +10,20 @@ import UIKit
 
 class MaintenanceViewController: UITableViewController {
     
-    var date = [String]()
-    var odometer = [String]()
-    var notes = [String]()
+
+    var maintenanceItemList: MaintenanceItemList
     
+    required init?(coder aDecoder: NSCoder) {
+        maintenanceItemList = MaintenanceItemList()
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Oil Change"
         
-        date += ["1999", "2000", "2005"]
-        odometer += ["12123", "14514", "37844"]
-        notes += ["Synthetic Oil. 20w50 Amsoil Extreme. Changed oil filter. Synthetic Oil. 20w50 Amsoil Extreme. Changed oil filter. Synthetic Oil. 20w50 Amsoil Extreme. Changed oil filter", "Oil change and filter", "Oil change, replace plug"]
+
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
@@ -30,14 +31,15 @@ class MaintenanceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes.count
+        return maintenanceItemList.maintenanceItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MaintenanceCell", for: indexPath) as! MaintenanceTableViewCell
-        cell.actualDateLabel.text = date[indexPath.row]
-        cell.actualOdometerLabel.text = odometer[indexPath.row]
-        cell.notesLabel.text = notes[indexPath.row]
+        cell.actualDateLabel.text = maintenanceItemList.maintenanceItems[indexPath.row].date
+        cell.actualOdometerLabel.text = maintenanceItemList.maintenanceItems[indexPath.row].odometer
+        cell.notesLabel.text = maintenanceItemList.maintenanceItems[indexPath.row].notes
+        
         return cell
     }
 
