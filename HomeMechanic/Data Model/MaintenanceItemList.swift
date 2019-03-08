@@ -32,4 +32,14 @@ class MaintenanceItemList {
         maintenanceItems.append(row1Item)
         maintenanceItems.append(row2Item)
     }
+    
+    func newMaintenanceItem() -> MaintenanceItem {
+        let maintenanceItem = MaintenanceItem()
+        maintenanceItem.date = "2010"
+        maintenanceItem.odometer = "44567"
+        maintenanceItem.notes = "Change Oil and Filter"
+        maintenanceItems.append(maintenanceItem)
+        return maintenanceItem
+    
+    }
 }

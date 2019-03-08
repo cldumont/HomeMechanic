@@ -23,11 +23,19 @@ class MaintenanceViewController: UITableViewController {
         
         title = "Oil Change"
         
-
-        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
 
+    }
+    
+    @IBAction func addItem(_ sender: Any) {
+        
+        let newRowIndex = maintenanceItemList.maintenanceItems.count
+        _ = maintenanceItemList.newMaintenanceItem()
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +49,12 @@ class MaintenanceViewController: UITableViewController {
         cell.notesLabel.text = maintenanceItemList.maintenanceItems[indexPath.row].notes
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        maintenanceItemList.maintenanceItems.remove(at: indexPath.row)
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
     }
 
 }
