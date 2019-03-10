@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4409A1CC2235C17D0040242F /* AllMaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4409A1CB2235C17D0040242F /* AllMaintenanceViewController.swift */; };
 		44402D212232C17900989632 /* AddEditItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44402D202232C17900989632 /* AddEditItemViewController.swift */; };
 		446D32BB22305E7900474F78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446D32BA22305E7900474F78 /* AppDelegate.swift */; };
 		446D32BD22305E7900474F78 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446D32BC22305E7900474F78 /* MaintenanceViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4409A1CB2235C17D0040242F /* AllMaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMaintenanceViewController.swift; sourceTree = "<group>"; };
 		44402D202232C17900989632 /* AddEditItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditItemViewController.swift; sourceTree = "<group>"; };
 		446D32B722305E7900474F78 /* HomeMechanic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeMechanic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		446D32BA22305E7900474F78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		446D32CD22305EA700474F78 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4409A1CB2235C17D0040242F /* AllMaintenanceViewController.swift */,
 				446D32BC22305E7900474F78 /* MaintenanceViewController.swift */,
 				44402D202232C17900989632 /* AddEditItemViewController.swift */,
 			);
@@ -181,6 +184,7 @@
 			files = (
 				446D32BD22305E7900474F78 /* MaintenanceViewController.swift in Sources */,
 				446D32BB22305E7900474F78 /* AppDelegate.swift in Sources */,
+				4409A1CC2235C17D0040242F /* AllMaintenanceViewController.swift in Sources */,
 				44955C1F2231913C007636A8 /* MaintenanceItem.swift in Sources */,
 				44955C21223196A5007636A8 /* MaintenanceItemList.swift in Sources */,
 				446D32D0223069CD00474F78 /* MaintenanceTableViewCell.swift in Sources */,
