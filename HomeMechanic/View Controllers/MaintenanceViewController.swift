@@ -10,6 +10,9 @@ import UIKit
 
 class MaintenanceViewController: UITableViewController {
 
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIBarButtonItem!
+    
     var maintenanceItemList: MaintenanceItemList
     
     required init?(coder aDecoder: NSCoder) {
@@ -23,11 +26,12 @@ class MaintenanceViewController: UITableViewController {
         title = "Oil Change"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationController?.isToolbarHidden = true
         
         tableView.allowsMultipleSelectionDuringEditing = true
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
-
+        
     }
     
     @IBAction func deleteItems(_ sender: Any) {
@@ -41,12 +45,16 @@ class MaintenanceViewController: UITableViewController {
             tableView.deleteRows(at: selectedRows, with: .automatic)
             tableView.endUpdates()
         }
+        navigationController?.isToolbarHidden = true
+        isEditing = false
     }
     
-//    override func setEditing(_ editing: Bool, animated: Bool) {
-//        super.setEditing(editing, animated: true)
-//        tableView.setEditing(tableView.isEditing, animated: true)
-//    }
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: true)
+        
+            addButton.isEnabled = !editing
+            navigationController?.isToolbarHidden = !editing
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return maintenanceItemList.maintenanceItems.count
@@ -73,6 +81,12 @@ class MaintenanceViewController: UITableViewController {
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !isEditing {
+        tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         maintenanceItemList.move(item: maintenanceItemList.maintenanceItems[sourceIndexPath.row], to: destinationIndexPath.row)
         tableView.reloadData()
@@ -91,6 +105,7 @@ class MaintenanceViewController: UITableViewController {
                     let item = maintenanceItemList.maintenanceItems[indexPath.row]
                     addEditItemViewController.itemToEdit = item
                     addEditItemViewController.delegate = self
+                    
                 }
             }
         }

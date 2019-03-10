@@ -96,20 +96,25 @@
                             <outlet property="delegate" destination="9uA-zJ-zvd" id="pbg-wl-ink"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem systemItem="trash" id="uae-SK-qJ7">
+                            <connections>
+                                <action selector="deleteItems:" destination="9uA-zJ-zvd" id="Nid-2u-pOj"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Maintenance Items" id="yUS-PT-cjX">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="4an-Bw-M7A">
-                                <connections>
-                                    <segue destination="KZX-Q7-gw1" kind="show" identifier="AddItemSegue" id="yxI-NE-39C"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Delete" id="uae-SK-qJ7">
-                                <connections>
-                                    <action selector="deleteItems:" destination="9uA-zJ-zvd" id="Nid-2u-pOj"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4an-Bw-M7A">
+                            <connections>
+                                <segue destination="KZX-Q7-gw1" kind="show" identifier="AddItemSegue" id="yxI-NE-39C"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="4an-Bw-M7A" id="16Y-2Q-mKe"/>
+                        <outlet property="deleteButton" destination="uae-SK-qJ7" id="Uqc-kB-CoD"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdY-53-r2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -118,13 +123,17 @@
         <!--Navigation Controller-->
         <scene sceneID="Z1v-mE-m2Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bie-1M-Cq3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Bie-1M-Cq3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZPH-4j-aIx">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eqr-Gy-2NF">
+                        <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="9uA-zJ-zvd" kind="relationship" relationship="rootViewController" id="lVE-yq-DjC"/>
                     </connections>
