@@ -11,7 +11,7 @@ import UIKit
 class MaintenanceViewController: UITableViewController {
 
     @IBOutlet weak var addButton: UIBarButtonItem!
-    @IBOutlet weak var deleteButton: UIBarButtonItem!
+   // @IBOutlet weak var deleteButton: UIBarButtonItem!
     
     var maintenanceItemList: MaintenanceItemList
     
@@ -25,12 +25,11 @@ class MaintenanceViewController: UITableViewController {
         
         loadMaintenanceItems()
         
-        title = "Oil Change"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.leftBarButtonItem = editButtonItem
-        navigationController?.isToolbarHidden = true
+        navigationItem.largeTitleDisplayMode = .never
+        //navigationItem.leftBarButtonItem = editButtonItem
+        //navigationController?.isToolbarHidden = true
         
-        tableView.allowsMultipleSelectionDuringEditing = true
+        //tableView.allowsMultipleSelectionDuringEditing = true
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         
@@ -70,27 +69,27 @@ class MaintenanceViewController: UITableViewController {
         }
     }
     
-    @IBAction func deleteItems(_ sender: Any) {
-        if let selectedRows = tableView.indexPathsForSelectedRows {
-            var items = [MaintenanceItem]()
-            for indexPath in selectedRows {
-                items.append(maintenanceItemList.maintenanceItems[indexPath.row])
-            }
-            maintenanceItemList.remove(items: items)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: selectedRows, with: .automatic)
-            tableView.endUpdates()
-        }
-        navigationController?.isToolbarHidden = true
-        isEditing = false
-    }
+//    @IBAction func deleteItems(_ sender: Any) {
+//        if let selectedRows = tableView.indexPathsForSelectedRows {
+//            var items = [MaintenanceItem]()
+//            for indexPath in selectedRows {
+//                items.append(maintenanceItemList.maintenanceItems[indexPath.row])
+//            }
+//            maintenanceItemList.remove(items: items)
+//            tableView.beginUpdates()
+//            tableView.deleteRows(at: selectedRows, with: .automatic)
+//            tableView.endUpdates()
+//        }
+//        navigationController?.isToolbarHidden = true
+//        isEditing = false
+//    }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: true)
-        
-            addButton.isEnabled = !editing
-            navigationController?.isToolbarHidden = !editing
-    }
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: true)
+//
+//            addButton.isEnabled = !editing
+//            navigationController?.isToolbarHidden = !editing
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return maintenanceItemList.maintenanceItems.count
@@ -120,9 +119,9 @@ class MaintenanceViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !isEditing {
+        //if !isEditing {
         tableView.deselectRow(at: indexPath, animated: true)
-        }
+        //}
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

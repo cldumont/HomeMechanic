@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Maintenance Items-->
+        <!--Maintenance -->
         <scene sceneID="dOd-BI-S6D">
             <objects>
-                <tableViewController id="9uA-zJ-zvd" customClass="MaintenanceViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9uA-zJ-zvd" userLabel="Maintenance " customClass="MaintenanceViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="InS-Kv-Bs9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,14 +96,8 @@
                             <outlet property="delegate" destination="9uA-zJ-zvd" id="pbg-wl-ink"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem systemItem="trash" id="uae-SK-qJ7">
-                            <connections>
-                                <action selector="deleteItems:" destination="9uA-zJ-zvd" id="Nid-2u-pOj"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
-                    <navigationItem key="navigationItem" title="Maintenance Items" id="yUS-PT-cjX">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Name of Maintenance Item" id="yUS-PT-cjX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4an-Bw-M7A">
                             <connections>
                                 <segue destination="KZX-Q7-gw1" kind="show" identifier="AddItemSegue" id="yxI-NE-39C"/>
@@ -113,17 +107,48 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="4an-Bw-M7A" id="16Y-2Q-mKe"/>
-                        <outlet property="deleteButton" destination="uae-SK-qJ7" id="Uqc-kB-CoD"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rdY-53-r2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1297" y="121"/>
+            <point key="canvasLocation" x="1442" y="120"/>
+        </scene>
+        <!--All Maintenance -->
+        <scene sceneID="qDO-Mr-BOe">
+            <objects>
+                <tableViewController id="OnP-ky-Nan" userLabel="All Maintenance " customClass="AllMaintenanceViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uky-fv-Uct">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllMaintenanceCell" id="fCt-gV-ljL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fCt-gV-ljL" id="8jl-Fw-Jtu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OnP-ky-Nan" id="y8Z-w9-PiN"/>
+                            <outlet property="delegate" destination="OnP-ky-Nan" id="uMc-6l-Nko"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="K4R-MH-yD8"/>
+                    <connections>
+                        <segue destination="9uA-zJ-zvd" kind="show" identifier="ShowMaintenance" id="Ubm-aP-86X"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7J-Jg-UA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="658" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z1v-mE-m2Z">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Bie-1M-Cq3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bie-1M-Cq3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZPH-4j-aIx">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -131,16 +156,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eqr-Gy-2NF">
-                        <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="9uA-zJ-zvd" kind="relationship" relationship="rootViewController" id="lVE-yq-DjC"/>
+                        <segue destination="OnP-ky-Nan" kind="relationship" relationship="rootViewController" id="dTH-vw-BT2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETP-eZ-wVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="501.60000000000002" y="121.88905547226388"/>
+            <point key="canvasLocation" x="-172" y="120"/>
         </scene>
         <!--Title-->
         <scene sceneID="W4W-zQ-aVR">
@@ -203,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWf-oT-HoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2071" y="121"/>
+            <point key="canvasLocation" x="2239" y="120"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
