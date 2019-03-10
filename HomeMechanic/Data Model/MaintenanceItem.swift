@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MaintenanceItem {
+class MaintenanceItem: NSObject {
     
     var date = ""
     var odometer = ""

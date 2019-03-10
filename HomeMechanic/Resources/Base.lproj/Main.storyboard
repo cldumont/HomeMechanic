@@ -19,15 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MaintenanceCell" rowHeight="132" id="emr-Ei-U2C" customClass="MaintenanceTableViewCell" customModule="HomeMechanic" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="MaintenanceCell" rowHeight="132" id="emr-Ei-U2C" customClass="MaintenanceTableViewCell" customModule="HomeMechanic" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="132"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="emr-Ei-U2C" id="Z6I-Yn-PVi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="131.66666666666666"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="131.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oxF-4D-FA8">
-                                            <rect key="frame" x="8" y="8" width="359" height="115.66666666666669"/>
+                                            <rect key="frame" x="8" y="8.0000000000000071" width="291" height="115.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNc-5x-cij">
                                                     <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="20.333333333333332"/>
@@ -87,6 +87,7 @@
                                     <outlet property="dateLabel" destination="DI4-79-ZBf" id="L9l-RJ-tGw"/>
                                     <outlet property="notesLabel" destination="9vo-NA-zFO" id="OZF-Xu-4GZ"/>
                                     <outlet property="odometerLabel" destination="Nqw-gb-kN5" id="iPm-lb-sGv"/>
+                                    <segue destination="KZX-Q7-gw1" kind="show" identifier="EditItemSegue" trigger="accessoryAction" id="ak6-iP-hvj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -133,7 +134,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
+                            <textField opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
                                 <rect key="frame" x="139" y="169" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -143,7 +144,7 @@
                                     <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="R2B-43-dZq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
+                            <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
                                 <rect key="frame" x="139" y="262" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -153,7 +154,7 @@
                                     <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="mzx-cF-hIo"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="102" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
                                 <rect key="frame" x="67" y="368" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,7 +171,7 @@
                                 <action selector="cancel:" destination="KZX-Q7-gw1" id="Lyq-hb-Lty"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Add" id="cEt-pV-PWZ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="cEt-pV-PWZ">
                             <connections>
                                 <action selector="done:" destination="KZX-Q7-gw1" id="Ny2-DF-mqF"/>
                             </connections>
@@ -186,7 +187,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWf-oT-HoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2066" y="120"/>
+            <point key="canvasLocation" x="2071" y="121"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ak6-iP-hvj"/>
+    </inferredMetricsTieBreakers>
 </document>

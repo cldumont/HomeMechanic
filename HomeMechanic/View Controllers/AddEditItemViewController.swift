@@ -11,11 +11,14 @@ import UIKit
 protocol AddEditViewControllerDelegate: class {
     func addEditViewControllerDidCancel(_ controller: AddEditItemViewController)
     func addEditViewController(_ controller: AddEditItemViewController, didFinishAdding item: MaintenanceItem)
+    func addEditViewController(_ controller: AddEditItemViewController, didFinishEditing item: MaintenanceItem)
 }
 
 class AddEditItemViewController: UIViewController {
     
     weak var delegate: AddEditViewControllerDelegate?
+    weak var maintenanceItemList: MaintenanceItemList?
+    weak var itemToEdit: MaintenanceItem?
     
     @IBOutlet weak var dateTextfield: UITextField!
     @IBOutlet weak var odometerTextfield: UITextField!
@@ -25,12 +28,18 @@ class AddEditItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         navigationItem.largeTitleDisplayMode = .never
-
         dateTextfield.delegate = self
         odometerTextfield.delegate = self
         notesTextview.delegate = self
+        
+        if let item = itemToEdit {
+            title = "Edit Item"
+            dateTextfield.text = item.date
+            odometerTextfield.text = item.odometer
+            notesTextview.text = item.notes
+            addBarButton.isEnabled = true
+        }
         
     }
     
@@ -42,23 +51,33 @@ class AddEditItemViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
         delegate?.addEditViewControllerDidCancel(self)
     }
     
     @IBAction func done(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-        let item = MaintenanceItem()
-        if let textFieldText = dateTextfield.text {
-            item.date = textFieldText
+        if let item = itemToEdit,
+            let date = dateTextfield.text,
+            let odometer = odometerTextfield.text,
+            let notes = notesTextview.text {
+            item.date = date
+            item.odometer = odometer
+            item.notes = notes
+            delegate?.addEditViewController(self, didFinishEditing: item)
+        } else {
+            if let item = maintenanceItemList?.newMaintenanceItem() {
+            if let textFieldText = dateTextfield.text {
+                item.date = textFieldText
+            }
+            if let textFieldText = odometerTextfield.text {
+                item.odometer = textFieldText
+            }
+            if let textViewText = notesTextview.text {
+                item.notes = textViewText
+            }
+            delegate?.addEditViewController(self, didFinishAdding: item)
         }
-        if let textFieldText = odometerTextfield.text {
-            item.odometer = textFieldText
         }
-        if let textViewText = notesTextview.text {
-            item.notes = textViewText
-        }
-        delegate?.addEditViewController(self, didFinishAdding: item)
+        
     }
     
 }
