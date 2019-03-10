@@ -9,7 +9,6 @@
 import UIKit
 
 class MaintenanceViewController: UITableViewController {
-    
 
     var maintenanceItemList: MaintenanceItemList
     
@@ -23,21 +22,31 @@ class MaintenanceViewController: UITableViewController {
         
         title = "Oil Change"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.leftBarButtonItem = editButtonItem
         
+        tableView.allowsMultipleSelectionDuringEditing = true
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
 
     }
     
-    @IBAction func addItem(_ sender: Any) {
-        
-        let newRowIndex = maintenanceItemList.maintenanceItems.count
-        _ = maintenanceItemList.newMaintenanceItem()
-        
-        let indexPath = IndexPath(row: newRowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
+    @IBAction func deleteItems(_ sender: Any) {
+        if let selectedRows = tableView.indexPathsForSelectedRows {
+            var items = [MaintenanceItem]()
+            for indexPath in selectedRows {
+                items.append(maintenanceItemList.maintenanceItems[indexPath.row])
+            }
+            maintenanceItemList.remove(items: items)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: selectedRows, with: .automatic)
+            tableView.endUpdates()
+        }
     }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: true)
+//        tableView.setEditing(tableView.isEditing, animated: true)
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return maintenanceItemList.maintenanceItems.count
@@ -49,17 +58,24 @@ class MaintenanceViewController: UITableViewController {
         configureText(for: cell, with: item)
         return cell
     }
-    
-    func configureText(for cell: MaintenanceTableViewCell, with item: MaintenanceItem) {
-        cell.actualDateLabel.text = item.date
-        cell.actualOdometerLabel.text = item.odometer
-        cell.notesLabel.text = item.notes
+ 
+    func configureText(for cell: UITableViewCell, with item: MaintenanceItem) {
+        if let cell = cell as? MaintenanceTableViewCell {
+            cell.actualDateLabel.text = item.date
+            cell.actualOdometerLabel.text = item.odometer
+            cell.notesLabel.text = item.notes
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         maintenanceItemList.maintenanceItems.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        maintenanceItemList.move(item: maintenanceItemList.maintenanceItems[sourceIndexPath.row], to: destinationIndexPath.row)
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,8 +104,7 @@ extension MaintenanceViewController: AddEditViewControllerDelegate {
     
     func addEditViewController(_ controller: AddEditItemViewController, didFinishAdding item: MaintenanceItem) {
         navigationController?.popViewController(animated: true)
-        let rowIndex = maintenanceItemList.maintenanceItems.count
-        maintenanceItemList.maintenanceItems.append(item)
+        let rowIndex = maintenanceItemList.maintenanceItems.count - 1
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)

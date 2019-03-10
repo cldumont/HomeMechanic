@@ -39,6 +39,8 @@ class AddEditItemViewController: UIViewController {
             odometerTextfield.text = item.odometer
             notesTextview.text = item.notes
             addBarButton.isEnabled = true
+        } else {
+            title = "Add Item"
         }
         
     }
