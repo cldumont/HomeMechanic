@@ -6,10 +6,11 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Maintenance View Controller-->
+        <!--Maintenance Items-->
         <scene sceneID="dOd-BI-S6D">
             <objects>
                 <tableViewController id="9uA-zJ-zvd" customClass="MaintenanceViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,10 +95,10 @@
                             <outlet property="delegate" destination="9uA-zJ-zvd" id="pbg-wl-ink"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="yUS-PT-cjX">
+                    <navigationItem key="navigationItem" title="Maintenance Items" id="yUS-PT-cjX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="4an-Bw-M7A">
                             <connections>
-                                <action selector="addItem:" destination="9uA-zJ-zvd" id="Ybp-wi-1NT"/>
+                                <segue destination="KZX-Q7-gw1" kind="show" identifier="AddItemSegue" id="yxI-NE-39C"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -123,6 +124,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETP-eZ-wVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="501.60000000000002" y="121.88905547226388"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="W4W-zQ-aVR">
+            <objects>
+                <viewController id="KZX-Q7-gw1" customClass="AddEditItemViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bIL-hF-I6P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
+                                <rect key="frame" x="139" y="169" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="R2B-43-dZq"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
+                                <rect key="frame" x="139" y="262" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="mzx-cF-hIo"/>
+                                </connections>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
+                                <rect key="frame" x="67" y="368" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="vWu-oL-ccT"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="8Su-HR-O6t">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="NbL-NY-lBn">
+                            <connections>
+                                <action selector="cancel:" destination="KZX-Q7-gw1" id="Lyq-hb-Lty"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Add" id="cEt-pV-PWZ">
+                            <connections>
+                                <action selector="done:" destination="KZX-Q7-gw1" id="Ny2-DF-mqF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addBarButton" destination="cEt-pV-PWZ" id="Frc-fK-IvN"/>
+                        <outlet property="cancelBarButton" destination="NbL-NY-lBn" id="93A-L6-Dix"/>
+                        <outlet property="dateTextfield" destination="9Yd-5u-HAL" id="rtM-wJ-1MS"/>
+                        <outlet property="notesTextview" destination="7hb-Ax-IxR" id="mcd-w6-ff0"/>
+                        <outlet property="odometerTextfield" destination="bFp-vi-3g5" id="exO-xp-UQ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fWf-oT-HoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2066" y="120"/>
         </scene>
     </scenes>
 </document>
