@@ -23,6 +23,8 @@ class MaintenanceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadMaintenanceItems()
+        
         title = "Oil Change"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.leftBarButtonItem = editButtonItem
@@ -32,6 +34,40 @@ class MaintenanceViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 200
         
+        print("Documents folder is \(documentsDirectory())")
+        print("Data file path is \(dataFilePath())")
+        
+    }
+    
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("MaintenanceItems.plist")
+    }
+    
+    func saveMaintenanceItems() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(maintenanceItemList.maintenanceItems)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadMaintenanceItems() {
+        let path = dataFilePath()
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            do {
+                maintenanceItemList.maintenanceItems = try decoder.decode([MaintenanceItem].self, from: data)
+            } catch {
+                print("Error decoding item array: \(error.localizedDescription)")
+            }
+        }
     }
     
     @IBAction func deleteItems(_ sender: Any) {
@@ -79,6 +115,8 @@ class MaintenanceViewController: UITableViewController {
         maintenanceItemList.maintenanceItems.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        saveMaintenanceItems()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -123,6 +161,8 @@ extension MaintenanceViewController: AddEditViewControllerDelegate {
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        saveMaintenanceItems()
     }
     
     func addEditViewController(_ controller: AddEditItemViewController, didFinishEditing item: MaintenanceItem) {
@@ -133,6 +173,8 @@ extension MaintenanceViewController: AddEditViewControllerDelegate {
             }
         }
         navigationController?.popViewController(animated: true)
+        
+        saveMaintenanceItems()
     }
     
     

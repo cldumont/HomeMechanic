@@ -8,11 +8,11 @@
 
 import Foundation
 
-class MaintenanceItemList {
+class MaintenanceItemList: NSObject, Codable {
     
     var maintenanceItems: [MaintenanceItem] = []
     
-    init() {
+    override init() {
         let row0Item = MaintenanceItem()
         row0Item.date = "1999"
         row0Item.odometer = "12123"
