@@ -122,13 +122,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllMaintenanceCell" id="fCt-gV-ljL">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="AllMaintenanceCell" id="fCt-gV-ljL">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fCt-gV-ljL" id="8jl-Fw-Jtu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="DHW-rJ-l5X" kind="show" identifier="EditListSegue" trigger="accessoryAction" id="A0B-YQ-WfX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -145,7 +148,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="9uA-zJ-zvd" kind="show" identifier="ShowMaintenance" id="Ubm-aP-86X"/>
-                        <segue destination="DHW-rJ-l5X" kind="show" identifier="EditListSegue" id="CEs-7b-tvE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7J-Jg-UA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -282,6 +284,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ak6-iP-hvj"/>
-        <segue reference="CEs-7b-tvE"/>
+        <segue reference="A0B-YQ-WfX"/>
     </inferredMetricsTieBreakers>
 </document>

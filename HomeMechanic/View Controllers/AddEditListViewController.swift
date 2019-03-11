@@ -19,6 +19,7 @@ protocol AddEditListViewControllerDelegate: class {
 class AddEditListViewController: UIViewController {
     
     weak var delegate: AddEditListViewControllerDelegate?
+     
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!

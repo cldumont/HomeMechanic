@@ -17,7 +17,8 @@ protocol AddEditViewControllerDelegate: class {
 class AddEditItemViewController: UIViewController {
     
     weak var delegate: AddEditViewControllerDelegate?
-    weak var maintenanceItemList: MaintenanceItemList?
+    //weak var maintenanceItemList: MaintenanceItemList?
+    weak var maintenanceList: MaintenanceList?
     weak var itemToEdit: MaintenanceItem?
     
     @IBOutlet weak var dateTextfield: UITextField!
@@ -66,7 +67,7 @@ class AddEditItemViewController: UIViewController {
             item.notes = notes
             delegate?.addEditViewController(self, didFinishEditing: item)
         } else {
-            if let item = maintenanceItemList?.newMaintenanceItem() {
+            if let item = maintenanceList?.newMaintenanceItem() {
             if let textFieldText = dateTextfield.text {
                 item.date = textFieldText
             }

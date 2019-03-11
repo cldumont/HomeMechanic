@@ -8,12 +8,20 @@
 
 import UIKit
 
-class MaintenanceList: NSObject {
+class MaintenanceList: NSObject, Codable {
 
     var name = ""
+    var items = [MaintenanceItem] ()
     
     init(name: String) {
         self.name = name
         super.init()
+    }
+    
+    func newMaintenanceItem() -> MaintenanceItem {
+        let maintenanceItem = MaintenanceItem()
+        items.append(maintenanceItem)
+        return maintenanceItem
+        
     }
 }
