@@ -136,14 +136,64 @@
                             <outlet property="delegate" destination="OnP-ky-Nan" id="uMc-6l-Nko"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="K4R-MH-yD8"/>
+                    <navigationItem key="navigationItem" title="Maintenace List" id="K4R-MH-yD8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="avk-Vi-NXN">
+                            <connections>
+                                <segue destination="DHW-rJ-l5X" kind="show" identifier="AddListSegue" id="up1-Jd-Ktv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="9uA-zJ-zvd" kind="show" identifier="ShowMaintenance" id="Ubm-aP-86X"/>
+                        <segue destination="DHW-rJ-l5X" kind="show" identifier="EditListSegue" id="CEs-7b-tvE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7J-Jg-UA5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="658" y="120"/>
+        </scene>
+        <!--Add/Edit Maintenance List-->
+        <scene sceneID="t2k-uf-tu9">
+            <objects>
+                <viewController id="DHW-rJ-l5X" customClass="AddEditListViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XEc-08-9kA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item List" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-X4-fxA">
+                                <rect key="frame" x="139" y="391" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="done:" destination="DHW-rJ-l5X" eventType="editingDidEndOnExit" id="UIe-Qb-m89"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dNi-vM-pr3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add/Edit Maintenance List" id="zaK-Du-6jX">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="iRO-Qp-MUt">
+                            <connections>
+                                <action selector="cancel:" destination="DHW-rJ-l5X" id="YMh-pJ-JYJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" id="2Rj-zf-gm4">
+                            <connections>
+                                <action selector="done:" destination="DHW-rJ-l5X" id="Vxh-Ad-HRb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="2Rj-zf-gm4" id="abE-aC-Qj7"/>
+                        <outlet property="textField" destination="VSc-X4-fxA" id="c4m-PH-5I3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kRp-Vy-U1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="657" y="823"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z1v-mE-m2Z">
@@ -166,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="-172" y="120"/>
         </scene>
-        <!--Title-->
+        <!--Add/Edit Maintenance Item-->
         <scene sceneID="W4W-zQ-aVR">
             <objects>
                 <viewController id="KZX-Q7-gw1" customClass="AddEditItemViewController" customModule="HomeMechanic" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,7 +255,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vWu-oL-ccT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="8Su-HR-O6t">
+                    <navigationItem key="navigationItem" title="Add/Edit Maintenance Item" id="8Su-HR-O6t">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="NbL-NY-lBn">
                             <connections>
                                 <action selector="cancel:" destination="KZX-Q7-gw1" id="Lyq-hb-Lty"/>
@@ -232,5 +282,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ak6-iP-hvj"/>
+        <segue reference="CEs-7b-tvE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,6 +15,9 @@ class MaintenanceViewController: UITableViewController {
     
     var maintenanceItemList: MaintenanceItemList
     
+    //new
+    var maintenanceList: MaintenanceList!
+    
     required init?(coder aDecoder: NSCoder) {
         maintenanceItemList = MaintenanceItemList()
         super.init(coder: aDecoder)
@@ -24,6 +27,9 @@ class MaintenanceViewController: UITableViewController {
         super.viewDidLoad()
         
         loadMaintenanceItems()
+        
+        //new
+        title = maintenanceList.name
         
         navigationItem.largeTitleDisplayMode = .never
         //navigationItem.leftBarButtonItem = editButtonItem
