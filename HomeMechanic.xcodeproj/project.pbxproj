@@ -15,8 +15,8 @@
 		446D32C222305E7B00474F78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 446D32C122305E7B00474F78 /* Assets.xcassets */; };
 		446D32C522305E7B00474F78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 446D32C322305E7B00474F78 /* LaunchScreen.storyboard */; };
 		446D32D0223069CD00474F78 /* MaintenanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446D32CF223069CD00474F78 /* MaintenanceTableViewCell.swift */; };
+		44858B1A2237105200937078 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44858B192237105200937078 /* DataModel.swift */; };
 		44955C1F2231913C007636A8 /* MaintenanceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44955C1E2231913C007636A8 /* MaintenanceItem.swift */; };
-		44955C21223196A5007636A8 /* MaintenanceItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44955C20223196A5007636A8 /* MaintenanceItemList.swift */; };
 		44F9335522360C5200DFB56A /* MaintenanceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9335422360C5200DFB56A /* MaintenanceList.swift */; };
 		44F9335722361A4A00DFB56A /* AddEditListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F9335622361A4A00DFB56A /* AddEditListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,8 +32,8 @@
 		446D32C422305E7B00474F78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		446D32C622305E7B00474F78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		446D32CF223069CD00474F78 /* MaintenanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceTableViewCell.swift; sourceTree = "<group>"; };
+		44858B192237105200937078 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		44955C1E2231913C007636A8 /* MaintenanceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceItem.swift; sourceTree = "<group>"; };
-		44955C20223196A5007636A8 /* MaintenanceItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceItemList.swift; sourceTree = "<group>"; };
 		44F9335422360C5200DFB56A /* MaintenanceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceList.swift; sourceTree = "<group>"; };
 		44F9335622361A4A00DFB56A /* AddEditListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,8 +68,8 @@
 		446D32B922305E7900474F78 /* HomeMechanic */ = {
 			isa = PBXGroup;
 			children = (
-				44955C1D223190AE007636A8 /* Data Model */,
 				446D32BA22305E7900474F78 /* AppDelegate.swift */,
+				44955C1D223190AE007636A8 /* Data Model */,
 				446D32CD22305EA700474F78 /* View Controllers */,
 				446D32CE223064B400474F78 /* Cells */,
 				446D32CC22305E9900474F78 /* Resources */,
@@ -110,9 +110,9 @@
 		44955C1D223190AE007636A8 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				44955C1E2231913C007636A8 /* MaintenanceItem.swift */,
-				44955C20223196A5007636A8 /* MaintenanceItemList.swift */,
+				44858B192237105200937078 /* DataModel.swift */,
 				44F9335422360C5200DFB56A /* MaintenanceList.swift */,
+				44955C1E2231913C007636A8 /* MaintenanceItem.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -193,10 +193,10 @@
 				4409A1CC2235C17D0040242F /* AllMaintenanceViewController.swift in Sources */,
 				44F9335722361A4A00DFB56A /* AddEditListViewController.swift in Sources */,
 				44955C1F2231913C007636A8 /* MaintenanceItem.swift in Sources */,
-				44955C21223196A5007636A8 /* MaintenanceItemList.swift in Sources */,
 				446D32D0223069CD00474F78 /* MaintenanceTableViewCell.swift in Sources */,
 				44402D212232C17900989632 /* AddEditItemViewController.swift in Sources */,
 				44F9335522360C5200DFB56A /* MaintenanceList.swift in Sources */,
+				44858B1A2237105200937078 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

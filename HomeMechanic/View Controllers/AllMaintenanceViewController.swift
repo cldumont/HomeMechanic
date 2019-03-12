@@ -8,80 +8,56 @@
 
 import UIKit
 
-class AllMaintenanceViewController: UITableViewController, AddEditListViewControllerDelegate {
+class AllMaintenanceViewController: UITableViewController {
     
-    var lists = [MaintenanceList]()
+    var dataModel: DataModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "Maintenance List"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        var list = MaintenanceList(name: "Oil Change")
-        lists.append(list)
-        
-        list = MaintenanceList(name: "Rotate Tires")
-        lists.append(list)
-        
-        loadMaintenanceItems()
-        
-        print("Documents folder is \(documentsDirectory())")
-        print("Data file path is \(dataFilePath())")
     }
     
-    func documentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    func dataFilePath() -> URL {
-        return documentsDirectory().appendingPathComponent("MaintenanceItems.plist")
-    }
-    
-    func saveMaintenanceItems() {
-        let encoder = PropertyListEncoder()
-        do {
-            let data = try encoder.encode(lists)
-            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
-        } catch {
-            print("Error encoding item array: \(error.localizedDescription)")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.delegate = self
+        
+        let index = dataModel.indexOfSelectedMaintenanceList
+        
+        if index >= 0 && index < dataModel.lists.count {
+            let maintenanceList = dataModel.lists[index]
+            performSegue(withIdentifier: "ShowMaintenance", sender: maintenanceList)
         }
     }
     
-    func loadMaintenanceItems() {
-        let path = dataFilePath()
-        if let data = try? Data(contentsOf: path) {
-            let decoder = PropertyListDecoder()
-            do {
-                lists = try decoder.decode([MaintenanceList].self, from: data)
-            } catch {
-                print("Error decoding item array: \(error.localizedDescription)")
-            }
-        }
-    }
-    
+    // MARK:- Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists.count
+        return dataModel.lists.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllMaintenanceCell", for: indexPath)
-        cell.textLabel?.text = lists[indexPath.row].name
+        cell.textLabel?.text = dataModel.lists[indexPath.row].name
         return cell
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        lists.remove(at: indexPath.row)
+        dataModel.lists.remove(at: indexPath.row)
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let maintenanceList = lists[indexPath.row]
+        dataModel.indexOfSelectedMaintenanceList = indexPath.row
+        let maintenanceList = dataModel.lists[indexPath.row]
         performSegue(withIdentifier: "ShowMaintenance", sender: maintenanceList)
     }
     
+    // MARK:- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowMaintenance" {
             let controller = segue.destination as! MaintenanceViewController
@@ -94,19 +70,22 @@ class AllMaintenanceViewController: UITableViewController, AddEditListViewContro
             controller.delegate = self
             
             if let indexPath = tableView.indexPath(for: sender as! UITableViewCell) {
-                controller.maintenanceListToEdit = lists[indexPath.row]
+                controller.maintenanceListToEdit = dataModel.lists[indexPath.row]
             }
         }
     }
     
+}
+
+extension AllMaintenanceViewController: AddEditListViewControllerDelegate {
     // MARK:- Add Edit List View Controller Delegates
     func addEditListViewControllerDidCancel(_ controller: AddEditListViewController) {
         navigationController?.popViewController(animated: true)
     }
     
     func addEditListViewController(_ controller: AddEditListViewController, didFinishAdding maintenanceList: MaintenanceList) {
-        let newRowIndex = lists.count
-        lists.append(maintenanceList)
+        let newRowIndex = dataModel.lists.count
+        dataModel.lists.append(maintenanceList)
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         let indexPaths = [indexPath]
@@ -116,7 +95,7 @@ class AllMaintenanceViewController: UITableViewController, AddEditListViewContro
     }
     
     func addEditListViewController(_ controller: AddEditListViewController, didFinishEditing maintenanceList: MaintenanceList) {
-        if let index = lists.index(of: maintenanceList) {
+        if let index = dataModel.lists.index(of: maintenanceList) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.textLabel!.text = maintenanceList.name
@@ -124,5 +103,15 @@ class AllMaintenanceViewController: UITableViewController, AddEditListViewContro
         }
         navigationController?.popViewController(animated: true)
     }
-    
+}
+
+extension AllMaintenanceViewController: UINavigationControllerDelegate {
+    // MARK:- Navigation Controller Delegates
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // was the back button tapped?
+        if viewController === self {
+            dataModel.indexOfSelectedMaintenanceList = -1
+        }
+        
+    }
 }

@@ -25,6 +25,15 @@ class MaintenanceViewController: UITableViewController {
         tableView.estimatedRowHeight = 200
     }
     
+    func configureText(for cell: UITableViewCell, with item: MaintenanceItem) {
+        if let cell = cell as? MaintenanceTableViewCell {
+            cell.actualDateLabel.text = item.date
+            cell.actualOdometerLabel.text = item.odometer
+            cell.notesLabel.text = item.notes
+        }
+    }
+    
+    // MARK:- Table View Data Source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return maintenanceList.items.count
     }
@@ -34,14 +43,6 @@ class MaintenanceViewController: UITableViewController {
         let item = maintenanceList.items[indexPath.row]
         configureText(for: cell, with: item)
         return cell
-    }
-    
-    func configureText(for cell: UITableViewCell, with item: MaintenanceItem) {
-        if let cell = cell as? MaintenanceTableViewCell {
-            cell.actualDateLabel.text = item.date
-            cell.actualOdometerLabel.text = item.odometer
-            cell.notesLabel.text = item.notes
-        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -54,6 +55,7 @@ class MaintenanceViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK:- Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItemSegue" {
             if let addEditItemViewController = segue.destination as? AddEditItemViewController {
@@ -78,6 +80,7 @@ class MaintenanceViewController: UITableViewController {
 }
 
 extension MaintenanceViewController: AddEditViewControllerDelegate {
+    // MARK:- Add Edit View Controller Delegates
     func addEditViewControllerDidCancel(_ controller: AddEditItemViewController) {
         navigationController?.popViewController(animated: true)
     }
@@ -99,7 +102,5 @@ extension MaintenanceViewController: AddEditViewControllerDelegate {
         }
         navigationController?.popViewController(animated: true)
     }
-    
-    
 }
 
