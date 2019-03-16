@@ -17,7 +17,6 @@ protocol AddEditViewControllerDelegate: class {
 class AddEditItemViewController: UIViewController {
     
     weak var delegate: AddEditViewControllerDelegate?
-    //weak var maintenanceItemList: MaintenanceItemList?
     weak var maintenanceList: MaintenanceList?
     weak var itemToEdit: MaintenanceItem?
     
@@ -47,9 +46,9 @@ class AddEditItemViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        dateTextfield.becomeFirstResponder()
-        odometerTextfield.becomeFirstResponder()
-        notesTextview.becomeFirstResponder()
+        //dateTextfield.becomeFirstResponder()
+        //odometerTextfield.becomeFirstResponder()
+        //notesTextview.becomeFirstResponder()
         
     }
     

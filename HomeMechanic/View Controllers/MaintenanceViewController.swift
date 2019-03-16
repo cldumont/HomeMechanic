@@ -14,6 +14,8 @@ class MaintenanceViewController: UITableViewController {
     
     var maintenanceList: MaintenanceList!
     
+    let numberFormatter = NumberFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
