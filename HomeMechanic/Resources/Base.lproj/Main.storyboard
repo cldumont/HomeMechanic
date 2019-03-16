@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oxF-4D-FA8">
-                                            <rect key="frame" x="8" y="8" width="291" height="115.66666666666669"/>
+                                            <rect key="frame" x="8" y="8.0000000000000071" width="291" height="115.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNc-5x-cij">
                                                     <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="20.333333333333332"/>
@@ -248,7 +248,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
                             <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer Reading" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
                                 <rect key="frame" x="87" y="260" width="200" height="30"/>
@@ -277,9 +277,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addBarButton" destination="cEt-pV-PWZ" id="Frc-fK-IvN"/>
                         <outlet property="cancelBarButton" destination="NbL-NY-lBn" id="93A-L6-Dix"/>
                         <outlet property="dateTextfield" destination="9Yd-5u-HAL" id="rtM-wJ-1MS"/>
+                        <outlet property="doneBarButton" destination="cEt-pV-PWZ" id="Frc-fK-IvN"/>
                         <outlet property="notesTextview" destination="7hb-Ax-IxR" id="mcd-w6-ff0"/>
                         <outlet property="odometerTextfield" destination="bFp-vi-3g5" id="exO-xp-UQ0"/>
                     </connections>

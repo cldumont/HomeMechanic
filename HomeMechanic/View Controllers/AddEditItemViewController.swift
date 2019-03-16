@@ -19,11 +19,12 @@ class AddEditItemViewController: UIViewController {
     weak var delegate: AddEditViewControllerDelegate?
     weak var maintenanceList: MaintenanceList?
     weak var itemToEdit: MaintenanceItem?
+    private var datePicker: UIDatePicker?
     
     @IBOutlet weak var dateTextfield: UITextField!
     @IBOutlet weak var odometerTextfield: UITextField!
     @IBOutlet weak var notesTextview: UITextView!
-    @IBOutlet weak var addBarButton: UIBarButtonItem!
+    @IBOutlet weak var doneBarButton: UIBarButtonItem!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -38,11 +39,32 @@ class AddEditItemViewController: UIViewController {
             dateTextfield.text = item.date
             odometerTextfield.text = item.odometer
             notesTextview.text = item.notes
-            addBarButton.isEnabled = true
+            doneBarButton.isEnabled = true
         } else {
             title = "Add Item"
         }
         
+        datePicker = UIDatePicker()
+        datePicker?.datePickerMode = .date
+        datePicker?.addTarget(self, action: #selector(AddEditItemViewController.dateChanged(datePicker:)), for: .valueChanged)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddEditItemViewController.viewTapped(gestureRecognizer:)))
+        
+        view.addGestureRecognizer(tapGesture)
+        
+        dateTextfield.inputView = datePicker
+        
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func dateChanged(datePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateTextfield.text = dateFormatter.string(from: datePicker.date)
+        odometerTextfield.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,37 +108,26 @@ class AddEditItemViewController: UIViewController {
 
 extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        dateTextfield.resignFirstResponder()
         odometerTextfield.resignFirstResponder()
-        notesTextview.resignFirstResponder()
+        notesTextview.becomeFirstResponder()
         return false
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        guard let oldText = textField.text,
-            let stringRange = Range(range, in: oldText) else { return false }
-        
+        let oldText = textField.text!
+        let stringRange = Range(range, in: oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: string)
-        if newText.isEmpty {
-            addBarButton.isEnabled = false
-        } else {
-            addBarButton.isEnabled = true
-        }
+        doneBarButton.isEnabled = !newText.isEmpty
         return true
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        guard let oldText = textView.text,
-            let stringRange = Range(range, in: oldText) else { return false }
-        
+        let oldText = textView.text!
+        let stringRange = Range(range, in: oldText)!
         let newText = oldText.replacingCharacters(in: stringRange, with: text)
-        if newText.isEmpty {
-            addBarButton.isEnabled = false
-        } else {
-            addBarButton.isEnabled = true
-        }
+        doneBarButton.isEnabled = !newText.isEmpty
         return true
     }
     
