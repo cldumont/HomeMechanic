@@ -46,7 +46,7 @@ class AddEditItemViewController: UIViewController {
             title = "Add Item"
         }
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddEditItemViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         
     }
@@ -54,7 +54,7 @@ class AddEditItemViewController: UIViewController {
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
+   
     func addDate() {
         datePicker = UIDatePicker()
         let doneDatePicker = UIToolbar()
@@ -71,13 +71,6 @@ class AddEditItemViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateTextfield.text = dateFormatter.string(from: datePicker!.date)
         odometerTextfield.becomeFirstResponder()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //dateTextfield.becomeFirstResponder()
-        //odometerTextfield.becomeFirstResponder()
-        //notesTextview.becomeFirstResponder()
-        
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -105,7 +98,6 @@ class AddEditItemViewController: UIViewController {
                 delegate?.addEditViewController(self, didFinishAdding: item)
             }
         }
-        
     }
     
 }
@@ -134,8 +126,6 @@ extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
         doneBarButton.isEnabled = !newText.isEmpty
         return true
     }
-    
-    
-    
+
 }
 
