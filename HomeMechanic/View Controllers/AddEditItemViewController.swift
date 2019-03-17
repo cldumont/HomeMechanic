@@ -34,6 +34,8 @@ class AddEditItemViewController: UIViewController {
         odometerTextfield.delegate = self
         notesTextview.delegate = self
         
+        addDate()
+        
         if let item = itemToEdit {
             title = "Edit Item"
             dateTextfield.text = item.date
@@ -44,15 +46,8 @@ class AddEditItemViewController: UIViewController {
             title = "Add Item"
         }
         
-        datePicker = UIDatePicker()
-        datePicker?.datePickerMode = .date
-        datePicker?.addTarget(self, action: #selector(AddEditItemViewController.dateChanged(datePicker:)), for: .valueChanged)
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddEditItemViewController.viewTapped(gestureRecognizer:)))
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-        
-        dateTextfield.inputView = datePicker
         
     }
     
@@ -60,10 +55,21 @@ class AddEditItemViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc func dateChanged(datePicker: UIDatePicker) {
+    func addDate() {
+        datePicker = UIDatePicker()
+        let doneDatePicker = UIToolbar()
+        doneDatePicker.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(self.dateChanged))
+        doneDatePicker.setItems([done], animated: false)
+        dateTextfield.inputAccessoryView = doneDatePicker
+        dateTextfield.inputView = datePicker
+        datePicker?.datePickerMode = .date
+    }
+    
+    @objc func dateChanged() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
-        dateTextfield.text = dateFormatter.string(from: datePicker.date)
+        dateTextfield.text = dateFormatter.string(from: datePicker!.date)
         odometerTextfield.becomeFirstResponder()
     }
     
