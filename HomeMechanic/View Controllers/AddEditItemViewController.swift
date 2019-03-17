@@ -34,7 +34,7 @@ class AddEditItemViewController: UIViewController {
         odometerTextfield.delegate = self
         notesTextview.delegate = self
         
-        addDate()
+        addDatePicker()
         
         if let item = itemToEdit {
             title = "Edit Item"
@@ -48,14 +48,13 @@ class AddEditItemViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddEditItemViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-        
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
    
-    func addDate() {
+    func addDatePicker() {
         datePicker = UIDatePicker()
         let doneDatePicker = UIToolbar()
         doneDatePicker.sizeToFit()
