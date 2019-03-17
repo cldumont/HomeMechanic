@@ -89,17 +89,15 @@ class AddEditItemViewController: UIViewController {
             delegate?.addEditViewController(self, didFinishEditing: item)
         } else {
             if let item = maintenanceList?.newMaintenanceItem() {
-            if let textFieldText = dateTextfield.text {
-                item.date = textFieldText
+                if let date = dateTextfield.text,
+                    let odometer = odometerTextfield.text,
+                    let notes = notesTextview.text {
+                    item.date = date
+                    item.odometer = odometer
+                    item.notes = notes
+                }
+                delegate?.addEditViewController(self, didFinishAdding: item)
             }
-            if let textFieldText = odometerTextfield.text {
-                item.odometer = textFieldText
-            }
-            if let textViewText = notesTextview.text {
-                item.notes = textViewText
-            }
-            delegate?.addEditViewController(self, didFinishAdding: item)
-        }
         }
         
     }
@@ -134,5 +132,4 @@ extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
     
     
 }
-
 
