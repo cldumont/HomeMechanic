@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oxF-4D-FA8">
-                                            <rect key="frame" x="8" y="8.0000000000000071" width="291" height="115.66666666666669"/>
+                                            <rect key="frame" x="8" y="8" width="291" height="115.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNc-5x-cij">
                                                     <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="20.333333333333332"/>
@@ -233,9 +233,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
-                                <rect key="frame" x="112" y="167" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
+                                <rect key="frame" x="159" y="167" width="57" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -243,16 +242,8 @@
                                     <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="R2B-43-dZq"/>
                                 </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
-                                <rect key="frame" x="16" y="368" width="343" height="178"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
-                            </textView>
-                            <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer Reading" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
-                                <rect key="frame" x="87" y="260" width="200" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Odometer Reading" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
+                                <rect key="frame" x="105" y="260" width="165" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -260,8 +251,25 @@
                                     <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="mzx-cF-hIo"/>
                                 </connections>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
+                                <rect key="frame" x="16" y="551" width="343" height="178"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.6588235294117647" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="bottom" secondItem="vWu-oL-ccT" secondAttribute="bottom" id="37d-Zi-cfj"/>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="centerX" secondItem="bIL-hF-I6P" secondAttribute="centerX" id="AGx-L1-0bS"/>
+                            <constraint firstItem="bFp-vi-3g5" firstAttribute="centerX" secondItem="bIL-hF-I6P" secondAttribute="centerX" id="EpJ-Jh-bcE"/>
+                            <constraint firstItem="bFp-vi-3g5" firstAttribute="top" secondItem="9Yd-5u-HAL" secondAttribute="bottom" constant="63" id="FXf-qO-k3E"/>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="top" secondItem="bFp-vi-3g5" secondAttribute="bottom" constant="261" id="IlA-xI-tYK"/>
+                            <constraint firstItem="9Yd-5u-HAL" firstAttribute="centerX" secondItem="bIL-hF-I6P" secondAttribute="centerX" id="XCC-gM-JNw"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="trailing" secondItem="7hb-Ax-IxR" secondAttribute="trailing" constant="16" id="kPv-lo-qGf"/>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="leading" secondItem="vWu-oL-ccT" secondAttribute="leading" constant="16" id="sQY-x2-12t"/>
+                            <constraint firstItem="9Yd-5u-HAL" firstAttribute="top" secondItem="vWu-oL-ccT" secondAttribute="top" constant="79" id="zSP-91-FEO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vWu-oL-ccT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Maintenance Item" id="8Su-HR-O6t">
