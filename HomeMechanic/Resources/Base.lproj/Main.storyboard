@@ -162,16 +162,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start a new list to keep track of your cars maintenance." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-jX-9lx">
-                                <rect key="frame" x="10" y="97" width="300" height="111"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start a new list to keep track of your cars maintenance." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oS1-jX-9lx">
+                                <rect key="frame" x="10" y="93" width="300" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Od9-SQ-X7N"/>
+                                    <constraint firstAttribute="height" constant="120" id="Zpy-To-Ut0"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of list" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-X4-fxA">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of list" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VSc-X4-fxA">
                                 <rect key="frame" x="10" y="233" width="300" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ny2-tn-4IP"/>
+                                    <constraint firstAttribute="width" constant="300" id="vYp-yF-Yv1"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -181,6 +187,12 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.6588235294117647" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="oS1-jX-9lx" firstAttribute="top" secondItem="dNi-vM-pr3" secondAttribute="top" constant="29" id="6bF-Ld-fLC"/>
+                            <constraint firstItem="VSc-X4-fxA" firstAttribute="centerX" secondItem="XEc-08-9kA" secondAttribute="centerX" id="IF7-zi-Dsv"/>
+                            <constraint firstItem="VSc-X4-fxA" firstAttribute="top" secondItem="oS1-jX-9lx" secondAttribute="bottom" constant="20" id="llX-Lw-g2H"/>
+                            <constraint firstItem="oS1-jX-9lx" firstAttribute="centerX" secondItem="XEc-08-9kA" secondAttribute="centerX" id="oOu-Rn-X2d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dNi-vM-pr3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Maintenance List" id="zaK-Du-6jX">
