@@ -67,7 +67,9 @@ class AddEditItemViewController: UIViewController {
     }
     
     @objc func doneNumPad () {
+        // Take a look bounces on smaller screens
         odometerTextfield.resignFirstResponder()
+        
         notesTextview.becomeFirstResponder()
     }
     
@@ -83,12 +85,11 @@ class AddEditItemViewController: UIViewController {
 
         let editingTextViewY: CGFloat! = self.notesTextview?.frame.origin.y
 
-
         //Checking if the textView is really hidden behind the keyboard
         if self.view.frame.origin.y >= 0 {
-            if editingTextViewY > keyboardY - 220 {
+            if editingTextViewY > keyboardY - 200 {
                 UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                    self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextViewY! - (keyboardY - 220)), width: self.view.bounds.width, height: self.view.bounds.height)
+                    self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextViewY! - (keyboardY - 200)), width: self.view.bounds.width, height: self.view.bounds.height)
                 }, completion: nil)
             }
         }
@@ -115,7 +116,6 @@ class AddEditItemViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateTextfield.text = dateFormatter.string(from: datePicker!.date)
-        dateTextfield.resignFirstResponder()
         odometerTextfield.becomeFirstResponder()
     }
     
@@ -151,8 +151,8 @@ class AddEditItemViewController: UIViewController {
 extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        odometerTextfield.resignFirstResponder()
-        return false
+        //odometerTextfield.resignFirstResponder()
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
