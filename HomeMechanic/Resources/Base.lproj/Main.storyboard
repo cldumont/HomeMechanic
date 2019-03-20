@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oxF-4D-FA8">
-                                            <rect key="frame" x="8" y="8" width="291" height="115.66666666666669"/>
+                                            <rect key="frame" x="8" y="8.0000000000000071" width="291" height="115.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNc-5x-cij">
                                                     <rect key="frame" x="0.0" y="0.0" width="184.66666666666666" height="20.333333333333332"/>
@@ -233,26 +233,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
-                                <rect key="frame" x="122" y="217" width="130" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="R2B-43-dZq"/>
-                                </connections>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
-                                <rect key="frame" x="16" y="358" width="343" height="178"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7hb-Ax-IxR">
+                                <rect key="frame" x="38" y="374" width="299" height="122"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textView>
-                            <textField opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mileage" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
-                                <rect key="frame" x="112" y="285" width="150" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" tag="101" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mileage" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFp-vi-3g5">
+                                <rect key="frame" x="112" y="314" width="150" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
@@ -260,15 +248,39 @@
                                     <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="mzx-cF-hIo"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Do Something Maintenance Item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-Qn-lBG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do Something Maintenance Item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7b-Qn-lBG">
                                 <rect key="frame" x="37" y="124" width="300" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Yd-5u-HAL">
+                                <rect key="frame" x="122" y="254" width="130" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="done:" destination="KZX-Q7-gw1" eventType="editingDidEndOnExit" id="R2B-43-dZq"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.6588235294117647" green="0.55294117647058827" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="top" secondItem="bFp-vi-3g5" secondAttribute="bottom" constant="30" id="BNp-Ah-hjb"/>
+                            <constraint firstItem="bFp-vi-3g5" firstAttribute="leading" secondItem="vWu-oL-ccT" secondAttribute="leading" constant="112" id="JEv-cH-yj6"/>
+                            <constraint firstItem="bFp-vi-3g5" firstAttribute="top" secondItem="9Yd-5u-HAL" secondAttribute="bottom" constant="30" id="Rzx-I5-FPT"/>
+                            <constraint firstItem="d7b-Qn-lBG" firstAttribute="leading" secondItem="vWu-oL-ccT" secondAttribute="leading" constant="37" id="TeU-FT-S1n"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="trailing" secondItem="d7b-Qn-lBG" secondAttribute="trailing" constant="38" id="fHY-1y-hmq"/>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="centerX" secondItem="vWu-oL-ccT" secondAttribute="centerX" id="i9c-G7-BSc"/>
+                            <constraint firstItem="d7b-Qn-lBG" firstAttribute="top" secondItem="vWu-oL-ccT" secondAttribute="top" constant="36" id="icI-CJ-l1V"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="trailing" secondItem="bFp-vi-3g5" secondAttribute="trailing" constant="113" id="jC7-oz-TVr"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="bottom" secondItem="7hb-Ax-IxR" secondAttribute="bottom" constant="233" id="kkB-w9-dqf"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="trailing" secondItem="7hb-Ax-IxR" secondAttribute="trailing" constant="38" id="nyt-8t-bYJ"/>
+                            <constraint firstItem="9Yd-5u-HAL" firstAttribute="leading" secondItem="vWu-oL-ccT" secondAttribute="leading" constant="122" id="r85-WS-K84"/>
+                            <constraint firstItem="9Yd-5u-HAL" firstAttribute="top" secondItem="d7b-Qn-lBG" secondAttribute="bottom" constant="70" id="rq4-sb-Q3e"/>
+                            <constraint firstItem="7hb-Ax-IxR" firstAttribute="leading" secondItem="vWu-oL-ccT" secondAttribute="leading" constant="38" id="sl0-gA-pg7"/>
+                            <constraint firstItem="vWu-oL-ccT" firstAttribute="trailing" secondItem="9Yd-5u-HAL" secondAttribute="trailing" constant="123" id="w7N-8O-zCe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vWu-oL-ccT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Maintenance Item" id="8Su-HR-O6t">
