@@ -34,6 +34,7 @@ class AddEditItemViewController: UIViewController {
         odometerTextfield.delegate = self
         notesTextview.delegate = self
         
+        dateTextfield.becomeFirstResponder()
         addDatePicker()
         
         if let item = itemToEdit {
@@ -52,7 +53,22 @@ class AddEditItemViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(keyboardDidShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
+        
+        let numberToolbar: UIToolbar = UIToolbar()
+        numberToolbar.items = [UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneNumPad))]
+        numberToolbar.sizeToFit()
+        odometerTextfield.inputAccessoryView = numberToolbar
+    
+    }
+    
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @objc func doneNumPad () {
+        odometerTextfield.resignFirstResponder()
+        notesTextview.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,28 +80,24 @@ class AddEditItemViewController: UIViewController {
         let info: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let keyboardY = self.view.frame.height - keyboardSize.height
-        
+
         let editingTextViewY: CGFloat! = self.notesTextview?.frame.origin.y
-        
+
+
         //Checking if the textView is really hidden behind the keyboard
         if self.view.frame.origin.y >= 0 {
-            if editingTextViewY > keyboardY - 200 {
+            if editingTextViewY > keyboardY - 220 {
                 UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                    self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextViewY! - (keyboardY - 200)), width: self.view.bounds.width, height: self.view.bounds.height)
+                    self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextViewY! - (keyboardY - 220)), width: self.view.bounds.width, height: self.view.bounds.height)
                 }, completion: nil)
             }
         }
     }
-    
+
     @objc func keyboardWillHide(notification: Notification) {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
-    }
-    
-    
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
-        view.endEditing(true)
     }
    
     func addDatePicker() {
@@ -103,6 +115,7 @@ class AddEditItemViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         dateTextfield.text = dateFormatter.string(from: datePicker!.date)
+        dateTextfield.resignFirstResponder()
         odometerTextfield.becomeFirstResponder()
     }
     
@@ -136,9 +149,9 @@ class AddEditItemViewController: UIViewController {
 }
 
 extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         odometerTextfield.resignFirstResponder()
-        notesTextview.becomeFirstResponder()
         return false
     }
     
@@ -163,6 +176,8 @@ extension AddEditItemViewController: UITextFieldDelegate, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         notesTextview = textView
     }
+    
+    
 
 }
 
