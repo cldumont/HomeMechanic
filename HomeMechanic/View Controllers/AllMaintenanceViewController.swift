@@ -95,7 +95,7 @@ extension AllMaintenanceViewController: AddEditListViewControllerDelegate {
     }
     
     func addEditListViewController(_ controller: AddEditListViewController, didFinishEditing maintenanceList: MaintenanceList) {
-        if let index = dataModel.lists.index(of: maintenanceList) {
+        if let index = dataModel.lists.firstIndex(of: maintenanceList) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.textLabel!.text = maintenanceList.name

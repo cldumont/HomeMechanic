@@ -96,7 +96,7 @@ extension MaintenanceViewController: AddEditViewControllerDelegate {
     }
     
     func addEditViewController(_ controller: AddEditItemViewController, didFinishEditing item: MaintenanceItem) {
-        if let index = maintenanceList.items.index(of: item) {
+        if let index = maintenanceList.items.firstIndex(of: item) {
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell as! MaintenanceTableViewCell, with: item)
